@@ -10,12 +10,15 @@ export default defineConfig({
       usePolling: true,
     },
     hmr: {
-      host: '0.0.0.0',
-      clientPort: 3002
+      host: 'localhost',
+      clientPort: 3001
     },
     host: true,
     strictPort: true,
-    port: 3002
+    port: 3001,
+    proxy: {
+      '/api': 'http://127.0.0.1:3002/'
+    }
   },
   plugins: [
     vue(),

@@ -1,18 +1,20 @@
 version: "3"
 services:
-  server:
-    build:
-      context: .
-      dockerfile: ./server/Dockerfile
-    ports:
-      - "3001:3001"
-    volumes:
-      - ./server:/app/server
   client:
     build:
       context: .
       dockerfile: ./client/Dockerfile
     ports:
-      - "3002:3002"
+      - "3001:3001"
     volumes:
       - ./client:/app/client
+    depends_on:
+      - server
+  server:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./server:/app/server
