@@ -18,3 +18,14 @@ services:
       - "3002:3002"
     volumes:
       - ./server:/app/server
+  nginx:
+    container_name: proxy_nginx
+    depends_on:
+      - client
+      - server
+    image: nginx:latest
+    ports:
+      - '81:81'
+    volumes:
+      - ./nginx:/app/nginx/conf.d
+    restart: always

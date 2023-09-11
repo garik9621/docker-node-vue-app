@@ -16,9 +16,6 @@ export default defineConfig({
     host: true,
     strictPort: true,
     port: 3001,
-    proxy: {
-      '/api': 'http://127.0.0.1:3002/'
-    }
   },
   plugins: [
     vue(),
